@@ -10,7 +10,8 @@
     </parent>
     <groupId>com.soldier</groupId>
     <artifactId>test-travis-ci-springboot</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <packaging>war</packaging>
+    <version>8081</version>
     <name>test-travis-ci-springboot</name>
     <description>Demo project for Spring Boot</description>
 

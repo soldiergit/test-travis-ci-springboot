@@ -1,5 +1,16 @@
 language: java
 install: mvn install
+addons:
+  ssh_known_hosts:
+  - $IP
+
 before_install:
-- openssl aes-256-cbc -K $encrypted_a7dfe7f624ec_key -iv $encrypted_a7dfe7f624ec_iv
-  -in id_rsa.enc -out ~/.ssh/id_rsa -d
+  - openssl aes-256-cbc -K $encrypted_a7dfe7f624ec_key -iv $encrypted_a7dfe7f624ec_iv
+    -in id_rsa.enc -out ~/.ssh/id_rsa -d
+  - chmod 600 ~/.ssh/id_rsa
+  - echo -e "Host $IP\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+
+# 执行部署脚本
+after_success:
+  - chmod 600 ~/.ssh/id_rsa
+  - rsync -az --delete ./target/test-travis-ci-springboot-8081.war root@$IP:/usr/local/tomcat/webapps
