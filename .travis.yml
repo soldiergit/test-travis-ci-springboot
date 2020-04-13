@@ -10,7 +10,7 @@ before_install:
   - chmod 600 ~/.ssh/id_rsa
   - echo -e "Host $IP\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 
-# 执行部署脚本
+# 执行部署脚本，将编译后的项目同步到服务器的webapps下
 after_success:
   - chmod 600 ~/.ssh/id_rsa
   - rsync -az --delete ./target/test-travis-ci-springboot-8081/* root@$IP:/usr/local/tomcat/webapps/test-travis-ci-springboot-8081
