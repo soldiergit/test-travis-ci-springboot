@@ -11,7 +11,6 @@
     <groupId>com.soldier</groupId>
     <artifactId>test-travis-ci-springboot</artifactId>
     <packaging>war</packaging>
-    <version>8081</version>
     <name>test-travis-ci-springboot</name>
     <description>Demo project for Spring Boot</description>
 
@@ -39,6 +38,7 @@
     </dependencies>
 
     <build>
+        <finalName>test-travis-ci-springboot</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
